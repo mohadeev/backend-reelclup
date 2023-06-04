@@ -29,7 +29,7 @@ app.use(express.json());
 dbConnect();
 app.use(
   cors({
-    origin: ORIGINHTTPSWWW, // use your actual domain name (or localhost), using * is not recommended
+    origin: "*", // use your actual domain name (or localhost), using * is not recommended
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
     credentials: true,
   })
