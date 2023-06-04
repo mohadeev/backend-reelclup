@@ -35,7 +35,7 @@ app.use(
   })
 );
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", ORIGINHTTPSWWW);
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", true);
   res.header("Access-Control-Allow-Credentials", true);
   res.header(
@@ -47,14 +47,7 @@ app.use(function (req, res, next) {
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origins: [
-      `${ORIGIN}`,
-      // `${ORIGINWWW}`,
-      // `${ORIGINHTTP}`,
-      // `${ORIGINHTTPWWW}`,
-      `${ORIGINHTTPS}`,
-      `${ORIGINHTTPSWWW}`,
-    ],
+    origins: ["*"],
   },
 });
 
