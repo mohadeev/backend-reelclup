@@ -61,6 +61,7 @@ allVideos.get("/:length", async (req, res) => {
                       index: index + skipLength,
                       channelData: channel,
                       videoData: vid,
+                      videoDetails: false,
                     };
                     await dataFinal.push(data);
                   }

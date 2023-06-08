@@ -77,6 +77,7 @@ videoData.get("/get/video/:videoId/:unique_id/:userId", async (req, res) => {
         }
       });
     }
+    //HERE
     videoModal.findOne({ _id: videoId }).then(async (video) => {
       // console.log("video-data", video);
       if (video) {
