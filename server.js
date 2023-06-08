@@ -16,6 +16,8 @@ import cookieParser from "cookie-parser";
 // testsFiles();
 //
 const app = express();
+app.use(cookieParser());
+
 const PORT = process.env.PORT || 5000;
 const ORIGIN = process.env.ORIGIN;
 const ORIGINWWW = process.env.ORIGINWWW;
@@ -27,7 +29,6 @@ const ORIGINHTTPSWWW = process.env.ORIGINHTTPSWWW;
 dotenv.config();
 // app.use(cookieParser());
 app.use(express.json());
-app.use(cookieParser());
 dbConnect();
 app.use(
   cors({
