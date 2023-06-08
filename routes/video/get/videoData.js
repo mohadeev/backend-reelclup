@@ -156,7 +156,7 @@ videoData.get("/get/video/:videoId/:unique_id/:userId", async (req, res) => {
               });
 
               res.json({
-                responseData: videoData[0],
+                videoData: videoData[0],
                 channelData: channelData[0],
                 library: {
                   savedToWatchLater,

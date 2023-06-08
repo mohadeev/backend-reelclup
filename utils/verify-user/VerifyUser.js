@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-//some changes
 const AuthToken = async (req, res, next) => {
   const reqParamsToken = req.params.token;
   // console.log("user is verfying from here", reqParamsToken);

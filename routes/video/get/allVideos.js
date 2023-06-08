@@ -6,6 +6,7 @@ import videoModal from "../../../db/schema/video.js";
 import url from "url";
 import allVideoCategory from "./all-video-utils/allVideoCategory.js";
 allVideos.get("/:length", async (req, res) => {
+  console.log(req);
   let limitLength = req.params.length;
   let skipLength = parseInt(limitLength) || 0;
   const query = req.query; // query = {sex:"female"}
@@ -50,6 +51,7 @@ allVideos.get("/:length", async (req, res) => {
                     "channelData.title": 1,
                     "channelData.name": 1,
                     "channelData.profileImg.url": 1,
+                    followersCount: { $size: "$followers" },
                   }
                 )
                 .then(async (channel) => {
