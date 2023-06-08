@@ -6,7 +6,7 @@ const uploadChannelImages = async (imageStr) => {
     const uploadResponse = await cloudinary.uploader.upload(imageStr, {
       resource_type: "video",
 
-      upload_preset: "profiles_nimbatube",
+      upload_preset: "profiles_Reelclup",
     });
     return uploadResponse;
   } catch (err) {

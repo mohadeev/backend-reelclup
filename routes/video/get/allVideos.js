@@ -31,6 +31,15 @@ allVideos.get("/:length", async (req, res) => {
           viewsCount: { $size: "$views" },
           commentsCount: { $size: "$comments" },
           location: 1,
+          likesCount: { $size: "$likes" },
+          disLikesCount: { $size: "$disLikes" },
+          isLiked: {
+            $cond: {
+              if: { $in: ["userId", "$likes"] },
+              then: true,
+              else: false,
+            },
+          },
         }
       )
       .skip(skipLength)

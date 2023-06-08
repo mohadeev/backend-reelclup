@@ -36,7 +36,7 @@ async function tokenSenderBNB(filterOurTransacton) {
   const coinPrice = filterOurTransacton.price;
   const transactionPrice = valuepared * coinPrice * 100;
   const nimbaValue = transactionPrice / nimbaPrice;
-  // console.log("nimbatube", nimbaValue);
+  // console.log("Reelclup", nimbaValue);
   const nimbaUSend = Math.round(nimbaValue);
   const amountToSend = ethers.utils.parseUnits(String(nimbaUSend), 18);
   const gasLimit = await tokenContract.estimateGas.transfer(

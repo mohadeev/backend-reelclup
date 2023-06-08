@@ -67,7 +67,7 @@ const channelCover = async (req, res) => {
                   const reslt = await s3UploadVideo(
                     buffer,
                     file.filename,
-                    "images-nimbatube-channels-profiles",
+                    "images-Reelclup-channels-profiles",
                     process.env.AWS_BUCKET_NAME
                   );
                   if (reslt) {

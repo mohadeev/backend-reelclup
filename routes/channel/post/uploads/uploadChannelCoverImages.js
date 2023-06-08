@@ -4,7 +4,7 @@ import { cloudinary } from "../../../../utils/Cloudinary/Cloudinary.js";
 const uploadChannelCoverImages = async (imageStr) => {
   try {
     const uploadResponse = await cloudinary.uploader.upload(imageStr, {
-      upload_preset: "covers_nimbatube",
+      upload_preset: "covers_Reelclup",
     });
     return uploadResponse;
   } catch (err) {
