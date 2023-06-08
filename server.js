@@ -10,6 +10,7 @@ import dbConnect from "./db/dbConnect.js";
 import socketFuncs from "./socket/socketFuncs.js";
 import renderVideo from "./live-funcs/video-handel/renderVideo.js";
 import testsFiles from "./testsFiles.js";
+import cookieParser from "cookie-parser";
 
 // import session from "express-session";
 // testsFiles();
@@ -26,6 +27,7 @@ const ORIGINHTTPSWWW = process.env.ORIGINHTTPSWWW;
 dotenv.config();
 // app.use(cookieParser());
 app.use(express.json());
+app.use(cookieParser());
 dbConnect();
 app.use(
   cors({
