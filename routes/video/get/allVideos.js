@@ -28,7 +28,8 @@ allVideos.get("/:length", async (req, res) => {
           thumbnail: 1,
           duration: 1,
           createdAt: 1,
-          views: 1,
+          viewsCount: { $size: "$views" },
+          commentsCount: { $size: "$comments" },
           location: 1,
         }
       )

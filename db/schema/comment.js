@@ -5,7 +5,6 @@ const commentSchema = mongoose.Schema(
     creatore: String,
     channelId: String,
     videoId: String,
-
     comment: {
       type: String,
     },
