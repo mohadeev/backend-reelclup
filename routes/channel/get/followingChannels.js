@@ -7,9 +7,18 @@ followingChannels.get("/", async (req, res) => {
   await User.findOne({ _id: userId }).then((docadded) => {
     if (docadded) {
       chanelModal
-        .find({
-          followers: { $elemMatch: { id: userId } },
-        })
+        .find(
+          {
+            followers: { $elemMatch: { id: userId } },
+          },
+          {
+            _id: 1,
+            "channelData.title": 1,
+            "channelData.name": 1,
+            "channelData.profileImg.url": 1,
+            followersCount: { $size: "$followers" },
+          }
+        )
         .then((channels) => {
           if (channels.length) {
             const allChannels = channels;

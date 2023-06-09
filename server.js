@@ -10,14 +10,11 @@ import dbConnect from "./db/dbConnect.js";
 import socketFuncs from "./socket/socketFuncs.js";
 import renderVideo from "./live-funcs/video-handel/renderVideo.js";
 import testsFiles from "./testsFiles.js";
-import cookieParser from "cookie-parser";
 
 // import session from "express-session";
 // testsFiles();
 //
 const app = express();
-app.use(cookieParser());
-
 const PORT = process.env.PORT || 5000;
 const ORIGIN = process.env.ORIGIN;
 const ORIGINWWW = process.env.ORIGINWWW;
