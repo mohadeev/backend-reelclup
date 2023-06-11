@@ -16,11 +16,10 @@ userNotification.get("/", async (req, res) => {
           { creator: userId },
           {
             _id: 1,
-            default: 1,
             "channelData.title": 1,
             "channelData.name": 1,
             "channelData.profileImg.url": 1,
-            followers: 1,
+            followersCount: { $size: "$followers" },
           }
         );
         const channels = [];
@@ -39,6 +38,19 @@ userNotification.get("/", async (req, res) => {
                   thumbnail: 1,
                   duration: 1,
                   createdAt: 1,
+                  viewsCount: { $size: "$views" },
+                  commentsCount: { $size: "$comments" },
+                  location: 1,
+                  likesCount: { $size: "$likes" },
+                  disLikesCount: { $size: "$disLikes" },
+                  isLiked: {
+                    $cond: {
+                      if: { $in: ["userId", "$likes"] },
+                      then: true,
+                      else: false,
+                    },
+                  },
+                  isCard: true,
                 }
               )
               .then(async (histyVid) => {
@@ -53,6 +65,7 @@ userNotification.get("/", async (req, res) => {
                         "channelData.title": 1,
                         "channelData.name": 1,
                         "channelData.profileImg.url": 1,
+                        followersCount: { $size: "$followers" },
                       }
                     )
                     .then(async (channel) => {
