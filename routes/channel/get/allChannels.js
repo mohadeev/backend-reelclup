@@ -21,7 +21,8 @@ allChannels.get("/", async (req, res) => {
             "channelData.title": 1,
             "channelData.name": 1,
             "channelData.profileImg.url": 1,
-            followers: 1,
+            "channelData.coverImg.url": 1,
+            followersCount: { $size: "$followers" },
           }
         );
         const channels = [];
