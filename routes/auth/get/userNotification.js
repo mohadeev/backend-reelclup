@@ -75,7 +75,9 @@ userNotification.get("/", async (req, res) => {
                         channelData: channel,
                         videoData: histyVid,
                       };
-                      await allNofy.push(data);
+                      if (channel) {
+                        await allNofy.push(data);
+                      }
                     });
                 }
               });
@@ -89,7 +91,7 @@ userNotification.get("/", async (req, res) => {
               };
               const videoLength = await videoModal.countDocuments(query);
               chnl.channelData.numbers = { uploads: videoLength };
-              console.log(chnl.channelData.numbers.uploads);
+              // console.log(chnl.channelData.numbers.uploads);
               await channels.push(chnl);
             }
           })
