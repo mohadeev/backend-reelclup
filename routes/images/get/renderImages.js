@@ -6,17 +6,17 @@ import Grid from "gridfs-stream";
 import mongoose from "mongoose";
 import multer from "multer";
 
-const mongoURL = process.env.MONGOCONNECTURL;
-const conn = mongoose.createConnection(mongoURL);
-let gfs, gridfsBucket;
+// const mongoURL = process.env.MONGOCONNECTURL;
+// const conn = mongoose.createConnection(mongoURL);
+// let gfs, gridfsBucket;
 
-conn.once("open", () => {
-  gridfsBucket = new mongoose.mongo.GridFSBucket(conn.db, {
-    bucketName: "images",
-  });
-  gfs = Grid(conn.db, mongoose.mongo);
-  gfs.collection("images");
-});
+// conn.once("open", () => {
+//   gridfsBucket = new mongoose.mongo.GridFSBucket(conn.db, {
+//     bucketName: "images",
+//   });
+//   gfs = Grid(conn.db, mongoose.mongo);
+//   gfs.collection("images");
+// });
 
 renderImages.get("/get/read/images/:filename", async (req, res) => {
   // try {

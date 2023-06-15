@@ -31,6 +31,9 @@ const videoSchema = mongoose.Schema(
       default: false,
     },
     forLive: { type: Boolean, default: false },
+    forShorts: { type: Boolean, default: false },
+    forWatch: { type: Boolean, default: false },
+    // type  :{}
     streaming: {
       socketId: String,
       created: { type: Boolean, default: false },

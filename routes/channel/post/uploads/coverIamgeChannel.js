@@ -11,45 +11,48 @@ import AuthToken from "../../../../utils/verify-user/VerifyUser.js";
 import s3UploadVideo from "../../../video/post/upload/aws3.js";
 import Grid from "gridfs-stream";
 import crypto from "crypto";
+import MongodbLink from "../../../../MongodbLink.js";
 ///post/channel/channel-profile-image/:token
-const mongoURL = process.env.MONGOCONNECTURL;
+const mongoURL = MongodbLink().toString();
+console.log(mongoURL);
+
 const conn = mongoose.createConnection(mongoURL);
 let gfs, gridfsBucket;
-conn.once("open", () => {
-  gridfsBucket = new mongoose.mongo.GridFSBucket(conn.db, {
-    bucketName: "images",
-  });
-  gfs = Grid(conn.db, mongoose.mongo);
-  gfs.collection("images");
-});
+// conn.once("open", () => {
+//   gridfsBucket = new mongoose.mongo.GridFSBucket(conn.db, {
+//     bucketName: "images",
+//   });
+//   gfs = Grid(conn.db, mongoose.mongo);
+//   gfs.collection("images");
+// });
 
-const storage = new GridFsStorage({
-  url: mongoURL,
-  file: (req, file) => {
-    const channelId = req.body.channelId;
-    return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if (err) {
-          return reject(err);
-        } else {
-          const filename =
-            channelId + buf.toString("hex") + path.extname(file.originalname);
-          const fileInfo = {
-            filename: filename,
-            bucketName: "images",
-          };
-          resolve(fileInfo);
-        }
-      });
-    });
-  },
-});
+// const storage = new GridFsStorage({
+//   url: mongoURL,
+//   file: (req, file) => {
+//     const channelId = req.body.channelId;
+//     return new Promise((resolve, reject) => {
+//       crypto.randomBytes(16, (err, buf) => {
+//         if (err) {
+//           return reject(err);
+//         } else {
+//           const filename =
+//             channelId + buf.toString("hex") + path.extname(file.originalname);
+//           const fileInfo = {
+//             filename: filename,
+//             bucketName: "images",
+//           };
+//           resolve(fileInfo);
+//         }
+//       });
+//     });
+//   },
+// });
 
-const upload = multer({ storage });
+// const upload = multer({ storage });
 newUpload.post(
   "/post/channel/channel-cover-image/:token",
   AuthToken,
-  upload.single("thumbnail"),
+  // upload.single("thumbnail"),
   async (req, res) => {
     const File = req.file;
     const contentType = File.mimetype;

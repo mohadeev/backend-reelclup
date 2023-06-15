@@ -10,44 +10,44 @@ import crypto from "crypto";
 import path from "path";
 import videoModal from "../../../db/schema/video.js";
 
-const mongoURL = process.env.MONGOCONNECTURL;
-const conn = mongoose.createConnection(mongoURL);
-let gfs, gridfsBucket;
-conn.once("open", () => {
-  gridfsBucket = new mongoose.mongo.GridFSBucket(conn.db, {
-    bucketName: "video",
-  });
-  gfs = Grid(conn.db, mongoose.mongo);
-  gfs.collection("video");
-});
+// const mongoURL = process.env.MONGOCONNECTURL;
+// // const conn = mongoose.createConnection(mongoURL);
+// let gfs, gridfsBucket;
+// conn.once("open", () => {
+//   gridfsBucket = new mongoose.mongo.GridFSBucket(conn.db, {
+//     bucketName: "video",
+//   });
+//   gfs = Grid(conn.db, mongoose.mongo);
+//   gfs.collection("video");
+// });
 
-const storage = new GridFsStorage({
-  url: mongoURL,
-  file: (req, file) => {
-    const channelId = req.body.channelId;
-    return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if (err) {
-          return reject(err);
-        } else {
-          const filename =
-            channelId + buf.toString("hex") + path.extname(file.originalname);
-          const fileInfo = {
-            filename: filename,
-            bucketName: "video",
-          };
-          resolve(fileInfo);
-        }
-      });
-    });
-  },
-});
+// const storage = new GridFsStorage({
+//   url: mongoURL,
+//   file: (req, file) => {
+//     const channelId = req.body.channelId;
+//     return new Promise((resolve, reject) => {
+//       crypto.randomBytes(16, (err, buf) => {
+//         if (err) {
+//           return reject(err);
+//         } else {
+//           const filename =
+//             channelId + buf.toString("hex") + path.extname(file.originalname);
+//           const fileInfo = {
+//             filename: filename,
+//             bucketName: "video",
+//           };
+//           resolve(fileInfo);
+//         }
+//       });
+//     });
+//   },
+// });
 
-const upload = multer({ storage });
+// const upload = multer({ storage });
 createNewVideo.post(
   "/post/video/create-new-video/:token",
   AuthToken,
-  upload.single("video"),
+  // upload.single("video"),
   async (req, res) => {
     const File = req.file;
     console.log("req is maded but something is happend");

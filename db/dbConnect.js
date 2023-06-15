@@ -1,15 +1,15 @@
 import mongoose from "mongoose";
+import MongodbLink from "../MongodbLink.js";
 
 const connnection = {};
-const conectUrl =
-  "mongodb+srv://kiciv2020:Fm7pZsWYdoKLAbuq@cluster0.9vxf7c9.mongodb.net/?retryWrites=true&w=majority";
+const conectUrl = MongodbLink();
 
 const dbConnect = async () => {
   if (connnection.isConnected) {
     return;
   }
 
-  const db = await mongoose.connect(process.env.MONGOCONNECTURL, {
+  const db = await mongoose.connect(conectUrl, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   });

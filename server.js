@@ -8,8 +8,8 @@ import Routes from "./routes/routes.js";
 import dbConnect from "./db/dbConnect.js";
 // import cookieParser from "cookie-parser";
 import socketFuncs from "./socket/socketFuncs.js";
-import renderVideo from "./live-funcs/video-handel/renderVideo.js";
-import testsFiles from "./testsFiles.js";
+// import renderVideo from "./live-funcs/video-handel/renderVideo.js";
+// import testsFiles from "./testsFiles.js";
 
 // import session from "express-session";
 // testsFiles();
@@ -23,7 +23,6 @@ const ORIGINHTTPWWW = process.env.ORIGINHTTPWWW;
 const ORIGINHTTPS = process.env.ORIGINHTTPS;
 const ORIGINHTTPSWWW = process.env.ORIGINHTTPSWWW;
 //
-dotenv.config();
 // app.use(cookieParser());
 app.use(express.json());
 dbConnect();
@@ -45,11 +44,14 @@ app.use(function (req, res, next) {
   next();
 });
 const server = http.createServer(app);
+dotenv.config();
+
 const io = new Server(server, {
   cors: {
     origins: ["*"],
   },
 });
+dotenv.config();
 
 io.on("connection", (socket) => {
   socketFuncs(io, socket);
@@ -66,7 +68,11 @@ app.get("/", (req, res) => {
   console.log("updated");
   res.json("24");
 });
+dotenv.config();
+
 server.listen(PORT, (err) => {
   if (err) console.log(err);
   console.log("Server running on Port ", PORT);
 });
+
+dotenv.config();
