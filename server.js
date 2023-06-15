@@ -56,10 +56,10 @@ io.on("connection", (socket) => {
 });
 
 (() => {
-  setInterval(() => {
-    renderVideo();
-  }, 20000);
-  renderVideo();
+  // setInterval(() => {
+  //   renderVideo();
+  // }, 20000);
+  // renderVideo();
 })();
 app.use("/", Routes);
 app.get("/", (req, res) => {

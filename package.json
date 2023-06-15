@@ -21,7 +21,7 @@
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
-    "cloudinary": "^1.30.1",
+    "cloudinary": "^1.37.1",
     "cookie": "^0.5.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
