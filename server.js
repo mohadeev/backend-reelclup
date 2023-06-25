@@ -8,6 +8,7 @@ import Routes from "./routes/routes.js";
 import dbConnect from "./db/dbConnect.js";
 // import cookieParser from "cookie-parser";
 import socketFuncs from "./socket/socketFuncs.js";
+import test from "./test.js";
 // import renderVideo from "./live-funcs/video-handel/renderVideo.js";
 // import testsFiles from "./testsFiles.js";
 
@@ -68,6 +69,7 @@ app.get("/", (req, res) => {
   console.log("updated");
   res.json("24");
 });
+app.use("/", test);
 dotenv.config();
 
 server.listen(PORT, (err) => {
