@@ -72,7 +72,6 @@ app.get("/", (req, res) => {
   res.json("24");
 });
 app.use("/", test);
-dotenv.config();
 
 app.listen(PORT, (err) => {
   if (err) console.log(err);
