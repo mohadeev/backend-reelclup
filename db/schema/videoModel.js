@@ -11,7 +11,7 @@ const videoSchema = mongoose.Schema(
     title: {
       type: String,
     },
-    descreption: {
+    description: {
       type: String,
       videoCategory: String,
     },

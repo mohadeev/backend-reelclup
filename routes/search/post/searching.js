@@ -26,7 +26,7 @@ searching.post("/", async (req, res) => {
   if (videos?.length >= 1 && searchData?.length >= 1) {
     const filtered = videos.filter((vid) => {
       return (
-        vid?.descreption?.includes(searchData) ||
+        vid?.description?.includes(searchData) ||
         vid?.title?.includes(searchData)
       );
     });

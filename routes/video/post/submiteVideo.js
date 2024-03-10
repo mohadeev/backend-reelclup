@@ -12,7 +12,7 @@ import videoModal from "../../../db/schema/videoModel.js";
 import channelModal from "../../../db/schema/channelModel.js";
 
 submiteVideo.post("/", (req, res) => {
-  const { title, descreption } = req.body;
+  const { title, description } = req.body;
   const videoCategory = req?.body?.videoCategory;
   const videoId = req.body._id;
   const userId = req.userId;
@@ -21,7 +21,7 @@ submiteVideo.post("/", (req, res) => {
     videoModal.findOne({ _id: videoId }).then(async (videoDataMain) => {
       const filter = { _id: videoId };
       const update = videoDataMain;
-      update.descreption = descreption;
+      update.description = description;
       update.title = title;
       update.category = videoCategory;
       update.thumbnailupload.uplaoded = true;
@@ -31,7 +31,7 @@ submiteVideo.post("/", (req, res) => {
       //   " thumbnailupload.finished": true,
       //   " thumbnailupload.updated": true,
       // const update = {
-      //   descreption: descreption,
+      //   description: description,
       //   title: title,
       //   category: videoCategory,
       //   "thumbnailupload.uplaoded": true,
