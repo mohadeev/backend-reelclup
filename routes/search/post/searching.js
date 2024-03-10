@@ -1,7 +1,7 @@
 import express from "express";
-import channelModal from "../../../db/schema/channel.js";
-import User from "../../../db/schema/userModal.js";
-import videoModal from "../../../db/schema/video.js";
+import channelModal from "../../../db/schema/channelModel.js";
+import User from "../../../db/schema/userModel.js";
+import videoModal from "../../../db/schema/videoModel.js";
 const searching = express.Router();
 
 searching.post("/", async (req, res) => {

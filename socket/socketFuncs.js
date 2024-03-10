@@ -1,9 +1,9 @@
-import videoModal from "../db/schema/video.js";
+import videoModal from "../db/schema/videoModel.js";
 import notification from "./notification.js";
 
 import path from "path";
 import cookie from "cookie";
-import streamVideo from "./streaming/streamVideo.js";
+import streamVideo from "./streaming/streamvideo.js";
 // import finishUplaod from "./finishUplaod.js";
 
 const socketFuncs = (io, socket) => {

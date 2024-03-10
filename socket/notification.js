@@ -1,7 +1,7 @@
-import videoModal from "../db/schema/video.js";
+import videoModal from "../db/schema/videoModel.js";
 import cookie from "cookie";
-import channelModal from "../db/schema/channel.js";
-import userModal from "../db/schema/userModal.js";
+import channelModal from "../db/schema/channelModel.js";
+import userModel from "../db/schema/userModel.js";
 import { v4 as uuidv4 } from "uuid";
 
 let users = [];
@@ -21,7 +21,7 @@ const notification = (io, socket) => {
         const email = userTokken.email;
         const unicId = uuidv4();
 
-        await userModal.findOne({ email: email }).then(async (docadded) => {
+        await userModel.findOne({ email: email }).then(async (docadded) => {
           if (docadded) {
             const querySessionStorageUnicId =
               socket.handshake.query.sessionStorageUnicId;
@@ -61,7 +61,7 @@ const notification = (io, socket) => {
             if (typeof User !== "undefined") {
               const userTokken = JSON.parse(User);
               const email = userTokken.email;
-              await userModal
+              await userModel
                 .findOne({ email: email })
                 .then(async (docadded) => {
                   if (docadded) {

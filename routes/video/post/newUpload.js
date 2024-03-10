@@ -1,15 +1,15 @@
 import express from "express";
-import User from "../../../db/schema/userModal.js";
+import User from "../../../db/schema/userModel.js";
 const newUpload = express.Router();
 import AuthToken from "../../../utils/verify-user/VerifyUser.js";
 import mongoose from "mongoose";
 import multer from "multer";
 import path from "path";
-import videoModal from "../../../db/schema/video.js";
+import videoModal from "../../../db/schema/videoModel.js";
 import fs from "fs";
 import s3UploadVideo from "./upload/aws3.js";
 import timeHandelr from "../../../live-funcs/video-handel/timeHandelr.js";
-import channelModal from "../../../db/schema/channel.js";
+import channelModal from "../../../db/schema/channelModel.js";
 const __dirname = path.resolve();
 
 // const storage = multer.memoryStorage();
@@ -49,7 +49,7 @@ newUpload.post(
               buffer,
               File.originalname,
               "videos",
-              process.env.AWS_BUCKET_NAME
+              process.env.REELCLUP_AWS_S3_BUCKET_NAME
             );
             // try {
             //   fs.unlinkSync(path);

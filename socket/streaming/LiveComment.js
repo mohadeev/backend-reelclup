@@ -1,4 +1,4 @@
-import videoModal from "../../db/schema/video.js";
+import videoModal from "../../db/schema/videoModel.js";
 
 import path from "path";
 import cookie from "cookie";

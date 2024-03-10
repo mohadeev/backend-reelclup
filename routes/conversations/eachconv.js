@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import User from "../../db/schema/userModal.js";
+import User from "../../db/schema/userModel.js";
 import Message from "../../db/schema/Message.js";
 
 const eachConv = async (req, res) => {

@@ -1,6 +1,6 @@
 import express from "express";
-import channelModal from "../../../db/schema/channel.js";
-import User from "../../../db/schema/userModal.js";
+import channelModal from "../../../db/schema/channelModel.js";
+import User from "../../../db/schema/userModel.js";
 const deleteChannel = express.Router();
 deleteChannel.post("/", async (req, res) => {
   const { channelId } = req.body;

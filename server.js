@@ -9,7 +9,8 @@ import dbConnect from "./db/dbConnect.js";
 // import cookieParser from "cookie-parser";
 import socketFuncs from "./socket/socketFuncs.js";
 import test from "./test.js";
-// import renderVideo from "./live-funcs/video-handel/renderVideo.js";
+import renderVideo from "./live-funcs/video-handel/rendervideo.js";
+// import renderVideo from "./live-funcs/video-handel/rendervideo.js";
 // import testsFiles from "./testsFiles.js";
 
 // import session from "express-session";
@@ -58,12 +59,12 @@ io.on("connection", (socket) => {
   socketFuncs(io, socket);
 });
 
-(() => {
-  // setInterval(() => {
-  //   renderVideo();
-  // }, 20000);
-  // renderVideo();
-})();
+// (() => {
+//   setInterval(() => {
+//     renderVideo();
+//   }, 20000);
+//   renderVideo();
+// })();
 app.use("/", Routes);
 app.get("/", (req, res) => {
   console.log("updated");

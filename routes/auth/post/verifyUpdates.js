@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import userModal from "../../../db/schema/userModal.js";
+import userModel from "../../../db/schema/userModel.js";
 import resErrorFunc from "../../../utils/resErrorFunc.js";
 import bcrypt from "bcrypt";
 
@@ -35,7 +35,7 @@ const verifyUpdates = async (res, userId, bodyData, docadded) => {
   let message = "";
 
   if (email) {
-    const countOfVideosNeedToUplaodTAws = await userModal.countDocuments({
+    const countOfVideosNeedToUplaodTAws = await userModel.countDocuments({
       email: email,
       _id: { $ne: userIdObj },
     });
@@ -105,7 +105,7 @@ const verifyUpdates = async (res, userId, bodyData, docadded) => {
       const filter = { _id: docadded._id };
       console.log("filter", filter);
       try {
-        await userModal.updateOne(filter, docadded);
+        await userModel.updateOne(filter, docadded);
         //User.findOne({ _id: userId }).then(async (docadded) => {
       } catch (error) {
         console.log("error", error);

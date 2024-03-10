@@ -1,13 +1,13 @@
 import express from "express";
-import channelModal from "../../../db/schema/channel.js";
+import channelModal from "../../../db/schema/channelModel.js";
 import mongoose from "mongoose";
-import User from "../../../db/schema/userModal.js";
+import User from "../../../db/schema/userModel.js";
 import commentModal from "../../../db/schema/comment.js";
 const channelPage = express.Router();
 import * as cookie from "cookie";
 import jwt from "jsonwebtoken";
 // import channelVideos from "./chanelVideos.js";
-import videoModal from "../../../db/schema/video.js";
+import videoModal from "../../../db/schema/videoModel.js";
 
 const AuthToken = async (req, reqParamsToken) => {
   if (

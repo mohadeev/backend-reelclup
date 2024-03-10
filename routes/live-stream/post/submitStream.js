@@ -1,5 +1,5 @@
 import webrtc from "wrtc";
-import videoModal from "../../../db/schema/video.js";
+import videoModal from "../../../db/schema/videoModel.js";
 
 const submitStream = async (req, res, allStreams) => {
   const { title, descreption } = req.body.videoData;

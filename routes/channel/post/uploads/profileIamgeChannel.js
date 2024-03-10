@@ -5,14 +5,15 @@ import mongoose from "mongoose";
 import multer from "multer";
 import { GridFsStorage } from "multer-gridfs-storage";
 import path from "path";
-import channelModal from "../../../../db/schema/channel.js";
-import videoModal from "../../../../db/schema/video.js";
+import channelModal from "../../../../db/schema/channelModel.js";
+import videoModal from "../../../../db/schema/videoModel.js";
 import AuthToken from "../../../../utils/verify-user/VerifyUser.js";
 import s3UploadVideo from "../../../video/post/upload/aws3.js";
 import Grid from "gridfs-stream";
 import crypto from "crypto";
+import MongodbLink from "../../../../MongodbLink.js";
 ///post/channel/channel-profile-image/:token
-const mongoURL = process.env.MONGOCONNECTURL;
+const mongoURL = MongodbLink();
 // const conn = mongoose.createConnection(mongoURL);
 let gfs, gridfsBucket;
 // conn.once("open", () => {

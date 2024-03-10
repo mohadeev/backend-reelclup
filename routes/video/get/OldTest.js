@@ -1,13 +1,13 @@
 import express from "express";
-import User from "../../../db/schema/userModal.js";
+import User from "../../../db/schema/userModel.js";
 const renderVideo = express.Router();
 import { GridFsStorage } from "multer-gridfs-storage";
 import Grid from "gridfs-stream";
 import mongoose from "mongoose";
 import multer from "multer";
-import videoModal from "../../../db/schema/video.js";
+import videoModal from "../../../db/schema/videoModel.js";
 
-const mongoURL = process.env.MONGOCONNECTURL;
+const mongoURL = MongodbLink();
 const conn = mongoose.createConnection(mongoURL);
 let gfs, gridfsBucket;
 

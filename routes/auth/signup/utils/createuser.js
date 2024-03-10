@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import User from "../../../../db/schema/userModal.js";
+import User from "../../../../db/schema/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 

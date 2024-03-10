@@ -2,8 +2,8 @@ import express from "express";
 const addToFavorites = express.Router();
 
 import mongoose from "mongoose";
-import userModal from "../../../db/schema/userModal.js";
-import videoModal from "../../../db/schema/video.js";
+import userModel from "../../../db/schema/userModel.js";
+import videoModal from "../../../db/schema/videoModel.js";
 
 addToFavorites.post("/", async (req, res) => {
   const { videoId } = req.body;
@@ -11,7 +11,7 @@ addToFavorites.post("/", async (req, res) => {
   console.log(videoId, userId);
   if (mongoose.Types.ObjectId.isValid(videoId)) {
     try {
-      userModal.findOne({ _id: userId }).then(async (useData) => {
+      userModel.findOne({ _id: userId }).then(async (useData) => {
         await videoModal.findOne({ _id: videoId }).then(async (vid) => {
           if (vid) {
             let arrayLikes = useData.favorites;
@@ -24,8 +24,8 @@ addToFavorites.post("/", async (req, res) => {
             const update = { favorites: arrayLikes };
             const filter = { _id: userId };
             try {
-              await userModal.updateOne(filter, update);
-              await userModal.findOne(filter).then((resuelt) => {
+              await userModel.updateOne(filter, update);
+              await userModel.findOne(filter).then((resuelt) => {
                 if (resuelt) {
                   const newLiked = resuelt.favorites.some(
                     ({ id }) => id === videoId

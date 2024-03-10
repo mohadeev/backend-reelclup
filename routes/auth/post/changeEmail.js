@@ -1,5 +1,5 @@
 import express from "express";
-import User from "../../../db/schema/userModal.js";
+import User from "../../../db/schema/userModel.js";
 import mongoose from "mongoose";
 const changeEmail = express.Router();
 

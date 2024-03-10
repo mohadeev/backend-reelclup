@@ -3,7 +3,7 @@ const likeVideo = express.Router();
 
 import mongoose from "mongoose";
 
-import videoModal from "../../../db/schema/video.js";
+import videoModal from "../../../db/schema/videoModel.js";
 
 likeVideo.post("/", async (req, res) => {
   const { IsLiked, IsDisLiked, videoId } = req.body;
@@ -48,7 +48,6 @@ likeVideo.post("/", async (req, res) => {
               }
             });
           } catch (error) {
-            
             res.end({ error: error.message });
           }
         } else if (!IsLiked && IsDisLiked) {
@@ -80,7 +79,6 @@ likeVideo.post("/", async (req, res) => {
               }
             });
           } catch (error) {
-            
             res.end({ error: error.message });
           }
         } else if (!IsLiked && !IsDisLiked) {
@@ -112,7 +110,6 @@ likeVideo.post("/", async (req, res) => {
               }
             });
           } catch (error) {
-            
             res.end({ error: error.message });
           }
         }

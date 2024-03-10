@@ -1,8 +1,8 @@
 import express from "express";
-import channelModal from "../../../db/schema/channel.js";
-import User from "../../../db/schema/userModal.js";
+import channelModal from "../../../db/schema/channelModel.js";
+import User from "../../../db/schema/userModel.js";
 const allVideos = express.Router();
-import videoModal from "../../../db/schema/video.js";
+import videoModal from "../../../db/schema/videoModel.js";
 
 allVideos.get("/:length", async (req, res) => {
   let limitLength = req.params.length;

@@ -1,15 +1,15 @@
 import express from "express";
-import User from "../../../db/schema/userModal.js";
+import User from "../../../db/schema/userModel.js";
 // const renderVideo = express.Router();
 import { GridFsStorage } from "multer-gridfs-storage";
 import Grid from "gridfs-stream";
 import mongoose from "mongoose";
 import multer from "multer";
-import videoModal from "../../../db/schema/video.js";
+import videoModal from "../../../db/schema/videoModel.js";
 import s3UploadVideo from "../post/upload/aws3.js";
 import timeHandelr from "../post/timeHandelr.js";
 
-const mongoURL = process.env.MONGOCONNECTURL;
+const mongoURL = MongodbLink();
 const conn = mongoose.createConnection(mongoURL);
 let gfs, gridfsBucket;
 conn.once("open", () => {
@@ -49,7 +49,7 @@ const renderVideo = async (req, res) => {
                 buffer,
                 file.filename,
                 "videos",
-                process.env.AWS_BUCKET_NAME
+                process.env.REELCLUP_AWS_S3_BUCKET_NAME
               );
               console.log("reslt", reslt);
               if (reslt) {

@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 import Grid from "gridfs-stream";
+import MongodbLink from "../MongodbLink";
 
-const mongoURL = process.env.MONGOCONNECTURL;
+const mongoURL = MongodbLink();
 const conn = mongoose.createConnection(mongoURL);
 export let gfs, gridfsBucket;
 

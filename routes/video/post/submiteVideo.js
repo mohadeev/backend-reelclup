@@ -1,5 +1,5 @@
 import express from "express";
-import User from "../../../db/schema/userModal.js";
+import User from "../../../db/schema/userModel.js";
 const submiteVideo = express.Router();
 import { GridFsStorage } from "multer-gridfs-storage";
 import Grid from "gridfs-stream";
@@ -8,8 +8,8 @@ import mongoose from "mongoose";
 import multer from "multer";
 import crypto from "crypto";
 import path from "path";
-import videoModal from "../../../db/schema/video.js";
-import channelModal from "../../../db/schema/channel.js";
+import videoModal from "../../../db/schema/videoModel.js";
+import channelModal from "../../../db/schema/channelModel.js";
 
 submiteVideo.post("/", (req, res) => {
   const { title, descreption } = req.body;

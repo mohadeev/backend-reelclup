@@ -1,17 +1,19 @@
 import express from "express";
-import User from "../../db/schema/userModal.js";
-// const channelCover = express.Router();
+import userModel from "../../db/schema/userModel.js";
+// const channelProfilImg = express.Router();
 import { GridFsStorage } from "multer-gridfs-storage";
 import Grid from "gridfs-stream";
 import mongoose from "mongoose";
 import multer from "multer";
-// import channelModal from "../../db/schema/video.js";
+// import channelModal from "../../db/schema/videoModel.js";
 import s3UploadVideo from "../../routes/video/post/upload/aws3.js";
 
-import channelModal from "../../db/schema/channel.js";
-import videosNoImg from "../videos-no-img/videosNoImg.js";
+import channelModal from "../../db/schema/channelModel.js";
+import videosNoImg from "../video-handel/videosNoImg.js";
+import awsDeleteFile from "../../routes/video/post/upload/awsDeleteFile.js";
+import MongodbLink from "../../MongodbLink.js";
 
-const mongoURL = process.env.MONGOCONNECTURL;
+const mongoURL = MongodbLink();
 const conn = mongoose.createConnection(mongoURL);
 let gfs, gridfsBucket;
 
@@ -23,7 +25,7 @@ conn.once("open", () => {
   gfs.collection("images");
 });
 
-const channelCover = async (req, res) => {
+const channelProfilImg = async (req, res) => {
   videosNoImg();
   const query = {
     "channelData.profileImg.profileImgUpload.uplaoded": true,
@@ -32,7 +34,7 @@ const channelCover = async (req, res) => {
   const countOfVideosNeedToUplaodTAws = await channelModal.countDocuments(
     query
   );
-  console.log("channel to update", countOfVideosNeedToUplaodTAws);
+  // console.log("channel to update", countOfVideosNeedToUplaodTAws);
   const countOfVideosToRemoveDb = await channelModal.countDocuments({
     "channelData.profileImg.profileImgUpload.uplaoded": true,
     "channelData.profileImg.profileImgUpload.finished": true,
@@ -64,10 +66,17 @@ const channelCover = async (req, res) => {
                   const reslt = await s3UploadVideo(
                     buffer,
                     file.filename,
-                    "images-Reelclup-channels-profiles",
+                    "images-nimbatube-channels-profiles",
                     process.env.AWS_BUCKET_NAME
                   );
                   if (reslt) {
+                    const fileKey =
+                      channelFile?.channelData?.profileImg?.profileImgUpload
+                        ?.fileKey;
+                    if (fileKey) {
+                      const isDleltedIamge = await awsDeleteFile("", fileKey);
+                      console.log("fil creatreed", isDleltedIamge);
+                    }
                     const filter = {
                       _id: channelFile._id,
                     };
@@ -79,6 +88,7 @@ const channelCover = async (req, res) => {
                       reslt.Key;
                     console.log(channelUpdate.channelData);
                     await channelModal.updateOne(filter, channelUpdate);
+                    removeVideosFromMonogodb();
                   } else {
                     console.log("noe ressuttttt");
                   }
@@ -93,7 +103,7 @@ const channelCover = async (req, res) => {
   };
 
   const removeVideosFromMonogodb = async () => {
-    console.log("no videos to update");
+    // console.log("no videos to update");
     channelModal
       .find({
         "channelData.profileImg.profileImgUpload.uplaoded": true,
@@ -108,7 +118,7 @@ const channelCover = async (req, res) => {
               var vidUploadedId = mongoose.Types.ObjectId(
                 vid.channelData.profileImg.profileImgUpload.id
               );
-              console.log("video id", vidUploadedId);
+              // console.log("video id", vidUploadedId);
               gfs.files.deleteOne({ _id: vidUploadedId }, async (err) => {
                 if (err) {
                   console.log(err);
@@ -132,13 +142,27 @@ const channelCover = async (req, res) => {
       });
   };
 
-  if (countOfVideosNeedToUplaodTAws >= 1) {
-    await uploadVideoToAws();
-  }
+  await uploadVideoToAws();
+  await removeVideosFromMonogodb();
+  const func = async () => {
+    new Promise((resolve, reject) => {
+      uploadVideoToAws();
+      resolve("susccess");
+    });
+  };
 
-  if (countOfVideosToRemoveDb >= 1) {
-    removeVideosFromMonogodb();
-  }
+  const another_func = async () => {
+    new Promise((resolve, reject) => {
+      removeVideosFromMonogodb();
+      resolve("susccess");
+    });
+  };
+
+  const main = async () => {
+    await func();
+    await another_func();
+  };
+  main();
 };
 
-export default channelCover;
+export default channelProfilImg;

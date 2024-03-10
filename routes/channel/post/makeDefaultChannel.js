@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
-import channelModal from "../../../db/schema/channel.js";
-import User from "../../../db/schema/userModal.js";
+import channelModal from "../../../db/schema/channelModel.js";
+import User from "../../../db/schema/userModel.js";
 const makeDefaultChannel = express.Router();
 makeDefaultChannel.post("/", async (req, res) => {
   const { channelId } = req.body;

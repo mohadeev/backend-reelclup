@@ -1,6 +1,6 @@
 import express from "express";
-import chanelModal from "../../../db/schema/channel.js";
-import User from "../../../db/schema/userModal.js";
+import chanelModal from "../../../db/schema/channelModel.js";
+import User from "../../../db/schema/userModel.js";
 const followingChannels = express.Router();
 followingChannels.get("/", async (req, res) => {
   const userId = req.userId;

@@ -8,7 +8,7 @@ import Routes from "./routes/routes.js";
 import dbConnect from "./db/dbConnect.js";
 // import cookieParser from "cookie-parser";
 import socketFuncs from "./socket/socketFuncs.js";
-import renderVideo from "./live-funcs/video-handel/renderVideo.js";
+import renderVideo from "./live-funcs/video-handel/rendervideo.js";
 import testsFiles from "./testsFiles.js";
 import cookieParser from "cookie-parser";
 

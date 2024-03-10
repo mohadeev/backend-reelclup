@@ -1,16 +1,16 @@
 import express from "express";
 import AuthToken from "../../../utils/verify-user/VerifyUser.js";
-// import createNewVideo from "./createNewVideo.js";
+// import createNewVideo from "./createNewvideo.js";
 import newUpload from "./newUpload.js";
 import createNewThumbnail from "./createNewThumbnail.js";
 import addToFavorites from "./addToFavorites.js";
 import addToWatchLater from "./addToWatchLater.js";
-import commentVideo from "./commentVideo.js";
-import likeVideo from "./likeVideo.js";
-import submiteVideo from "./submiteVideo.js";
+import commentVideo from "./commentvideo.js";
+import likeVideo from "./likevideo.js";
+import submiteVideo from "./submitevideo.js";
 import uplaodFiles2 from "./uplaodFiles2.js";
-import createNewVideo from "./createNewVideo.js";
-import deleteVideo from "./deleteVideo.js";
+import createNewVideo from "./createNewvideo.js";
+import deleteVideo from "./deletevideo.js";
 const videoRoutesPosts = express.Router();
 
 const allRoutes = [

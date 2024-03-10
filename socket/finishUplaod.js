@@ -4,13 +4,13 @@ import { GridFsStorage } from "multer-gridfs-storage";
 import Grid from "gridfs-stream";
 import mongoose from "mongoose";
 import multer from "multer";
-import videoModal from "../db/schema/video.js";
-import channelModal from "../db/schema/channel.js";
+import videoModal from "../db/schema/videoModel.js";
+import channelModal from "../db/schema/channelModel.js";
 import s3UploadVideo from "../routes/video/post/upload/aws3.js";
 import timeHandelr from "../live-funcs/video-handel/timeHandelr.js";
-import renderVideo from "../live-funcs/video-handel/renderVideo.js";
+import renderVideo from "../live-funcs/video-handel/rendervideo.js";
 
-const mongoURL = process.env.MONGOCONNECTURL;
+const mongoURL = MongodbLink();
 const conn = mongoose.createConnection(mongoURL);
 let gfs, gridfsBucket;
 

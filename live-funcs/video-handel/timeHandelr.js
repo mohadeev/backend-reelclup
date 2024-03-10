@@ -1,6 +1,6 @@
 import { getVideoDurationInSeconds } from "get-video-duration";
 import VideoTimeReader from "../../routes/video/post/timer.js";
-import videoModal from "../../db/schema/video.js";
+import videoModel from "../../db/schema/videoModel.js";
 import { v4 as uuidv4 } from "uuid";
 import { fileTypeFromBuffer } from "file-type";
 // import fileType from "file-type";
@@ -14,7 +14,7 @@ const __dirname = path.resolve();
 
 const timeHandelr = async (Id, buffer) => {
   if (Id) {
-    videoModal.findOne({ _id: Id }).then(async (video) => {
+    videoModel.findOne({ _id: Id }).then(async (video) => {
       if (video) {
         //     ffprobe(path, { path: ffprobeStatic.path }, (err, info) => {
         //       (async () => {
@@ -32,7 +32,7 @@ const timeHandelr = async (Id, buffer) => {
         //               duration: timeVideo,
         //             };
         //             try {
-        //               await videoModal.updateOne(filter, updateUser);
+        //               await videoModel.updateOne(filter, updateUser);
         //               console.log("updates");
         //               // fs.unlinkSync(path);
         //               //file removed
@@ -69,7 +69,7 @@ const timeHandelr = async (Id, buffer) => {
                       };
                       fs.unlinkSync(filePath);
                       try {
-                        await videoModal.updateOne(filter, updateUser);
+                        await videoModel.updateOne(filter, updateUser);
                       } catch (error) {}
                     }
                   );

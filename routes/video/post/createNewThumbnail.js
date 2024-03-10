@@ -4,8 +4,8 @@ import fs from "fs";
 import mongoose from "mongoose";
 import multer from "multer";
 import path from "path";
-import channelModal from "../../../db/schema/channel.js";
-import videoModal from "../../../db/schema/video.js";
+import channelModal from "../../../db/schema/channelModel.js";
+import videoModal from "../../../db/schema/videoModel.js";
 import AuthToken from "../../../utils/verify-user/VerifyUser.js";
 import s3UploadVideo from "./upload/aws3.js";
 import { GridFsStorage } from "multer-gridfs-storage";
@@ -13,7 +13,7 @@ import Grid from "gridfs-stream";
 import crypto from "crypto";
 const __dirname = path.resolve();
 
-// const mongoURL = process.env.MONGOCONNECTURL;
+// const mongoURL = MongodbLink();
 // const conn = mongoose.createConnection(mongoURL);
 // let gfs, gridfsBucket;
 // conn.once("open", () => {
@@ -75,7 +75,7 @@ newUpload.post(
                 buffer,
                 File.originalname,
                 "video-thumbnail",
-                process.env.AWS_BUCKET_NAME
+                process.env.REELCLUP_AWS_S3_BUCKET_NAME
               );
               const filter = { _id: videoData };
               const update = videoDataId;
