@@ -14,8 +14,9 @@ import channelModal from "../../../db/schema/channelModel.js";
 submiteVideo.post("/", (req, res) => {
   const { title, descreption } = req.body;
   const videoCategory = req?.body?.videoCategory;
-  const videoId = req.body.video_id;
+  const videoId = req.body._id;
   const userId = req.userId;
+  console.log("title", title);
   if (mongoose.Types.ObjectId.isValid(videoId)) {
     videoModal.findOne({ _id: videoId }).then(async (videoDataMain) => {
       const filter = { _id: videoId };
@@ -43,6 +44,7 @@ submiteVideo.post("/", (req, res) => {
 
       videoModal.findOneAndUpdate(filter, update, async (error, resuel) => {
         const channelId = resuel.channelId;
+        console.log("title after update", resuel?.title);
         if (channelId) {
           const channelId = resuel.channelId;
           const channelData = await channelModal.findOne({ _id: channelId });

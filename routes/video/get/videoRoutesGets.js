@@ -6,6 +6,7 @@ import historyVideo from "./historyvideo.js";
 // import renderVideo from "./rendervideo.js";
 import videoData from "./videoData.js";
 import watchLater from "./watchLater.js";
+import videoAdminData from "./videoAdminData.js";
 const videoRoutesGets = express.Router();
 videoRoutesGets.use(`/get/video/display`, allVideos);
 
@@ -39,6 +40,11 @@ const allRoutes = [
     name: watchLater,
     auth: true,
     rout: "/watch-later-video/",
+  },
+  {
+    name: videoAdminData,
+    auth: false,
+    rout: "/video-edite-admin/",
   },
   //
 ];
