@@ -3,11 +3,11 @@ import AWS from "aws-sdk";
 // Set your AWS credentials and region
 const BUCKET = process.env.AWS_BUCKET_NAME;
 
-AWS.config.update({
-  secretAccessKey: "DYtvFURtonk9hr+kR9koV9XW81pU3X3Ga4EOUb9T",
-  accessKeyId: "AKIAZH6RLFVA32VWXIQE",
-  region: process.env.REGION,
-});
+// AWS.config.update({
+//   secretAccessKey: "DYtvFURtonk9hr+kR9koV9XW81pU3X3Ga4EOUb9T",
+//   accessKeyId: "AKIAZH6RLFVA32VWXIQE",
+//   region: process.env.REGION,
+// });
 
 const s3 = new AWS.S3();
 
