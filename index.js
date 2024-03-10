@@ -56,9 +56,9 @@ const io = new Server(server, {
 });
 dotenv.config();
 
-io.on("connection", (socket) => {
-  socketFuncs(io, socket);
-});
+// io.on("connection", (socket) => {
+//   socketFuncs(io, socket);
+// });
 
 // (() => {
 //   setInterval(() => {
@@ -74,7 +74,7 @@ app.get("/", (req, res) => {
 app.use("/", test);
 dotenv.config();
 
-server.listen(PORT, (err) => {
+app.listen(PORT, (err) => {
   if (err) console.log(err);
   console.log("Server running on Port ", PORT);
 });
