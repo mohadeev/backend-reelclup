@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@ffprobe-installer/ffprobe": "^2.0.0",
+    "@vitalets/google-translate-api": "^9.2.0",
     "@wagmi/core": "^1.0.2",
     "aws-sdk": "^2.1248.0",
     "axios": "^0.27.2",
