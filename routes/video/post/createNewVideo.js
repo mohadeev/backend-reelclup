@@ -9,7 +9,7 @@ import multer from "multer";
 import crypto from "crypto";
 import path from "path";
 import videoModel from "../../../db/schema/videoModel.js";
-import renderVideo from "../../../live-funcs/video-handel/rendervideo.js";
+import renderVideo from "../../../live-funcs/video-handel/renderVideo.js";
 import MongodbLink from "../../../MongodbLink.js";
 
 const mongoURL = MongodbLink();
