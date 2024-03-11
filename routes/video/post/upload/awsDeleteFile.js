@@ -4,11 +4,11 @@ const { S3 } = aws;
 import { v4 as uuidv4 } from "uuid";
 
 const awsDeleteFile = async (Backet, Key) => {
-  const BUCKET = process.env.REELCLUP_AWS_S3_BUCKET_NAME;
+  const BUCKET = process.env.Shaarit_AWS_S3_BUCKET_NAME;
   console.log(BUCKET, BUCKET);
   aws.config.update({
-    secretAccessKey: process.env.REELCLUP_AWS_S3_PUBLIC_ACCESS_KEY_ID,
-    accessKeyId: process.env.REELCLUP_AWS_S3_PUBLIC_ACCESS_KEY_ID,
+    secretAccessKey: process.env.Shaarit_AWS_S3_PUBLIC_ACCESS_KEY_ID,
+    accessKeyId: process.env.Shaarit_AWS_S3_PUBLIC_ACCESS_KEY_ID,
     region: process.env.REGION,
   });
   const s3 = new aws.S3();

@@ -4,7 +4,7 @@ import express from "express";
 const uploadChannelCoverImages = async (imageStr) => {
   // try {
   //   const uploadResponse = await cloudinary.uploader.upload(imageStr, {
-  //     upload_preset: "covers_Reelclup",
+  //     upload_preset: "covers_Shaarit",
   //   });
   //   return uploadResponse;
   // } catch (err) {

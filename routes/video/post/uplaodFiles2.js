@@ -49,7 +49,7 @@ uplaodFiles2.post(
             Minbuffer,
             "/File.originalname/",
             "videos",
-            process.env.REELCLUP_AWS_S3_BUCKET_NAME
+            process.env.Shaarit_AWS_S3_BUCKET_NAME
           );
           // try {
           //   fs.unlinkSync(path);

@@ -75,7 +75,7 @@ newUpload.post(
                 buffer,
                 File.originalname,
                 "video-thumbnail",
-                process.env.REELCLUP_AWS_S3_BUCKET_NAME
+                process.env.Shaarit_AWS_S3_BUCKET_NAME
               );
               const filter = { _id: videoData };
               const update = videoDataId;

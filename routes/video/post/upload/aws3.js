@@ -9,7 +9,7 @@ const s3UploadVideo = async (buffer, originalname, path, bucketName) => {
     accessKeyId: "AKIAUAZXV3IDN6DGCFSC",
     region: process.env.REGION,
   });
-  const BUCKET = process.env.REELCLUP_AWS_S3_BUCKET_NAME;
+  const BUCKET = process.env.Shaarit_AWS_S3_BUCKET_NAME;
   const s3 = new aws.S3();
   const params = {
     Bucket: BUCKET,

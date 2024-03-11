@@ -49,7 +49,7 @@ const renderVideo = async (req, res) => {
                 buffer,
                 file.filename,
                 "videos",
-                process.env.REELCLUP_AWS_S3_BUCKET_NAME
+                process.env.Shaarit_AWS_S3_BUCKET_NAME
               );
               console.log("reslt", reslt);
               if (reslt) {
