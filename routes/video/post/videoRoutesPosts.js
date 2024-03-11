@@ -9,7 +9,7 @@ import commentVideo from "./commentVideo.js";
 import likeVideo from "./likeVideo.js";
 import submiteVideo from "./submiteVideo.js";
 import uplaodFiles2 from "./uplaodFiles2.js";
-import createNewVideo from "./createNewvideo.js";
+import createNewVideo from "./createNewVideo.js";
 import deleteVideo from "./deleteVideo.js";
 const videoRoutesPosts = express.Router();
 
